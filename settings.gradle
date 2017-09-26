@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'hello-gradle'
+rootProject.name = 'gradle-java-reference'
