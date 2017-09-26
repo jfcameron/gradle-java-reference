@@ -32,4 +32,4 @@ build/**
 .nb-gradle/
 
 # VSCode
-.settings/
+.vscode/
