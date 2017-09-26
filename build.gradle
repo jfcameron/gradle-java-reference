@@ -10,6 +10,11 @@
    gradleVersion = '2.0' //version required
 }
 
+task pythonTestExample(type:Exec) {
+   workingDir './python/'
+   commandLine 'python', 'test.py'
+} 
+
 description = 'A trivial Gradle build'
 version = '1.0'
 
