@@ -26,5 +26,10 @@ build/**
 
 # gradle
 !/gradle/wrapper/gradle-wrapper.jar
-.nb-gradle/
 .gradle/
+
+# Netbeans gradle plugin
+.nb-gradle/
+
+# VSCode
+.settings/
