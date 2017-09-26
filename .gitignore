@@ -26,3 +26,5 @@ build/**
 
 # gradle
 !/gradle/wrapper/gradle-wrapper.jar
+.nb-gradle/
+.gradle/
