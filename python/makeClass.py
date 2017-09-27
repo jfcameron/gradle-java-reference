@@ -11,11 +11,17 @@ parser.add_argument('-classname',       required=True, type=str, help='name of c
 parser.add_argument('-outputdir',       required=True, type=str, help='directory where java file should be made')
 args = parser.parse_args()
 
+_variables =\
+{
+    "year": str(datetime.date.today().year),
+    "year-month-day":  str(datetime.date.today())
+}
+
 _template = \
 """
 // © ${YEAR} ${COPYRIGHTHOLDER} - All Rights Reserved
 // Project: ${PROJECTNAME}
-// Created on ${YMD}.
+// Created on ${YEAR-MONTH-DAY}.
 package ${PACKAGENAME};
 
 /**
@@ -28,15 +34,13 @@ public class ${CLASSNAME}
 
 """
 
-_output = _template\
-.replace("${YEAR}",        str(datetime.date.today().year))\
-.replace("${YMD}",         str(datetime.date.today()))\
+_output = _template
+
+for key, value in _variables.items():
+    _output = _output.replace("${" + key.upper() + "}", value)
 
 for arg in vars(args):
-    print(arg + ": " + getattr(args, arg))
     _output = _output.replace("${" + arg.upper() + "}", getattr(args, arg))
-
-print (_output)
 
 text_file = open(args.outputdir+"/"+args.classname+".java", "w")
 text_file.write(_output)
