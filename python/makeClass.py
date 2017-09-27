@@ -14,10 +14,10 @@ args = parser.parse_args()
 _variables =\
 {
     "year": str(datetime.date.today().year),
-    "year-month-day":  str(datetime.date.today())
+    "year-month-day": str(datetime.date.today())
 }
 
-_template = \
+_template =\
 """
 // © ${YEAR} ${COPYRIGHTHOLDER} - All Rights Reserved
 // Project: ${PROJECTNAME}
@@ -29,10 +29,9 @@ package ${PACKAGENAME};
  */
 public class ${CLASSNAME}
 {
-
+    
 }
-
-"""
+""".split("\n",2)[2]
 
 _output = _template
 
