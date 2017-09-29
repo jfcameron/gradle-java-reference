@@ -3,7 +3,7 @@
 import datetime
 import argparse
 
-parser = argparse.ArgumentParser("makes a new project at the given location")
+parser = argparse.ArgumentParser("makes a new java class file at the given location")
 parser.add_argument('-projectname',     required=True, type=str, help='name of project')
 parser.add_argument('-packagename',     required=True, type=str, help='name of package')
 parser.add_argument('-copyrightholder', required=True, type=str, help='name of copyrightholder')
