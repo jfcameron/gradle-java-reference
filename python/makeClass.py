@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 _variables =\
 {
-    "year": str(datetime.date.today().year),
+    "year":           str(datetime.date.today().year),
     "year-month-day": str(datetime.date.today())
 }
 
@@ -27,9 +27,9 @@ package ${PACKAGENAME};
 /**
  * No description provided for ${CLASSNAME}
  */
-public class ${CLASSNAME}
+public final abstract class ${CLASSNAME} 
 {
-    
+
 }
 """.split("\n",2)[2]
 
