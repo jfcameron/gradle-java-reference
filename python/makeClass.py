@@ -3,20 +3,12 @@
 import datetime
 import argparse
 
-parser = argparse.ArgumentParser("makes a new java class file at the given location")
-parser.add_argument('-projectname',     required=True, type=str, help='name of project')
-parser.add_argument('-packagename',     required=True, type=str, help='name of package')
-parser.add_argument('-copyrightholder', required=True, type=str, help='name of copyrightholder')
-parser.add_argument('-classname',       required=True, type=str, help='name of class')
-parser.add_argument('-outputdir',       required=True, type=str, help='directory where java file should be made')
-args = parser.parse_args()
+_Help =\
+"makes a new java class file at the given location"
 
-_variables =\
-{
-    "year":           str(datetime.date.today().year),
-    "year-month-day": str(datetime.date.today())
-}
-
+# ==================
+# Templates
+# ==================
 _template =\
 """
 // © ${YEAR} ${COPYRIGHTHOLDER} - All Rights Reserved
@@ -32,6 +24,34 @@ public final abstract class ${CLASSNAME}
 
 }
 """.split("\n",2)[2]
+
+# ==================
+# Symbols
+# ==================
+_args =\
+[
+    ["projectname",     "name of project"],
+    ["packagename",     "name of package"],
+    ["classname",       "name of class"],
+    ["copyrightholder", "name of copyrightholder"]
+]
+
+_variables =\
+{
+    "year":           str(datetime.date.today().year),
+    "year-month-day": str(datetime.date.today())
+}
+
+# ==============
+# Program
+# ==============
+parser = argparse.ArgumentParser(_Help)
+_args.append(["outputdir", "directory where the class file should be made"])
+
+for arg in _args:
+    parser.add_argument(str("-" + arg[0]), required=True, type=str, help=str(arg[1]))
+
+args = parser.parse_args()
 
 _output = _template
 
